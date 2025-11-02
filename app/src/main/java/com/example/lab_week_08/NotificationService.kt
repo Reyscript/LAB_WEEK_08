@@ -176,8 +176,8 @@ class NotificationService : Service() {
         //which will be executed on a different thread
         serviceHandler.post {
             //Sets up what happens after the notification is posted
-            //Here, we're counting down from 10 to 0 in the notification
-            countDownFromTenToZero(notificationBuilder)
+            //Here, we're counting down from 7 to 0 in the notification (CHANGED FROM 10 TO 7)
+            countDownFromSevenToZero(notificationBuilder)
             //Here we're notifying the MainActivity that the service process is done
             //by returning the channel ID through LiveData
             notifyCompletion(Id)
@@ -191,13 +191,12 @@ class NotificationService : Service() {
         return returnValue
     }
 
-    //A function to update the notification to display a count down from 10 to 0
-    private fun countDownFromTenToZero(notificationBuilder: NotificationCompat.Builder) {
+    //A function to update the notification to display a count down from 7 to 0 (CHANGED FROM 10 TO 7)
+    private fun countDownFromSevenToZero(notificationBuilder: NotificationCompat.Builder) {
         //Gets the notification manager
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
-        //Count down from 10 to 0
-        for (i in 10 downTo 0) {
+        for (i in 1 downTo 0) {
             Thread.sleep(1000L)
             //Updates the notification content text
             notificationBuilder.setContentText("$i seconds until last warning")
